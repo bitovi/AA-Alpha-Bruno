@@ -1,0 +1,27 @@
+meta {
+  name: API Cannex
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{base_url}}/cannex/canx_anty_inc1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "income_request_data": {
+      "state_cd": "AL",
+      "contract_cd": "S",
+      "premium": "100.00",
+      "purchase_date": "2025-04-30",
+      "gender_cd_primary": "M",
+      "purchase_age_primary": 50,
+      "income_start_age_primary": 55
+    },
+    "anty_ds_version_id": "A4VF3H",
+    "analysis_data_id": "0017960796"
+  }
+}

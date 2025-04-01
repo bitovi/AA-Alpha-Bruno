@@ -1,0 +1,89 @@
+meta {
+  name: SOAPReq
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://www.cannex.com/app/CANX/AntyInc1Service
+  body: xml
+  auth: none
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+    <s:Header>
+      <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" s:mustUnderstand="1">
+        <wsse:UsernameToken wsu:Id="UsernameToken-1">
+          <wsse:Username>AALLC04</wsse:Username>
+          <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">{{password}}</wsse:Password>
+          <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">{{nonce}}</wsse:Nonce>
+          <wsu:Created>{{created}}</wsu:Created>
+        </wsse:UsernameToken>
+      </wsse:Security>
+    </s:Header>
+    <s:Body>
+      <cws:anty_income_request1 xmlns="http://www.cannex.com" xmlns:cws="http://www.cannex.com/ws" version="1.0">
+        <income_request1_set>
+          <logon_id>AALLC04</logon_id>
+          <user_id/>
+          <transaction_id>37a161cc-de65-4ee0-a88f-8c6bcfde0a01</transaction_id>
+          <income_request_data>
+            <state_cd>AL</state_cd>
+            <contract_cd>S</contract_cd>
+            <premium>100.0</premium>
+            <purchase_date>2023-04-27</purchase_date>
+            <gender_cd_primary>M</gender_cd_primary>
+            <purchase_age_primary>50</purchase_age_primary>
+            <income_start_age_primary>55</income_start_age_primary>
+          </income_request_data>
+          <anty_ds_version_id>A4VF3H</anty_ds_version_id>
+          <analysis_data_id>0017960796</analysis_data_id>
+          <cnx_sequence_id>0</cnx_sequence_id>
+          <cnx_sequence_id>1</cnx_sequence_id>
+          <is_test>N</is_test>
+        </income_request1_set>
+      </cws:anty_income_request1>
+    </s:Body>
+  </s:Envelope>
+}
+
+vars:pre-request {
+  ~cannex_password: 1N0FGV0K4N048QE4Y0V3RY2MJB7XPJBS
+  ~username: AAUAT02
+}
+
+script:pre-request {
+  const crypto = require("crypto");
+  
+  
+  function computePasswordDigest(nonceBase64, created, password) {
+      // Decode Base64 Nonce
+      const nonce = Buffer.from(nonceBase64, "base64");
+  
+      // Convert Created & Password to UTF-8 Bytes
+      const createdBytes = Buffer.from(created, "utf8");
+      const passwordBytes = Buffer.from(password, "utf8");
+  
+      // Concatenate Nonce + Created + Password
+      const data = Buffer.concat([nonce, createdBytes, passwordBytes]);
+  
+      // Compute SHA1 Hash
+      const sha1Hash = crypto.createHash("sha1").update(data).digest();
+  
+      // Encode the result in Base64
+      return sha1Hash.toString("base64");
+  }
+  
+  function generateNonceAndCreated(length = 16) {
+      const nonce = crypto.randomBytes(length).toString("base64");
+      const created = new Date().toISOString(); // UTC timestamp in ISO 8601 format
+      return { nonce, created };
+  }
+  
+  const { nonce, created } = generateNonceAndCreated()
+  bru.setVar('nonce',nonce)
+  bru.setVar('created',created)
+  
+  bru.setVar('password',computePasswordDigest(nonce, created, process.env.CANNEX_PASSWORD)) 
+}
