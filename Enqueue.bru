@@ -1,0 +1,21 @@
+meta {
+  name: Enqueue
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{base_url}}/api/products/ingest-cannex-ratings
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{accessToken}}
+}
+
+body:json {
+  {
+    "xmlFileName": "anty_ds_crr_prds-1.1.xml"
+  }
+}

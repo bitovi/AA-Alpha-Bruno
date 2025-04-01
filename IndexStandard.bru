@@ -1,0 +1,15 @@
+meta {
+  name: IndexStandard
+  type: http
+  seq: 8
+}
+
+get {
+  url: https://api.theindexstandard.com/v1/annuities_reports?access_token={{process.env.INDEX_STANDARD_API_KEY}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  access_token: {{process.env.INDEX_STANDARD_API_KEY}}
+}
