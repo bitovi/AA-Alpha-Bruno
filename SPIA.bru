@@ -1,0 +1,58 @@
+meta {
+  name: SPIA
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:4000/cannex/spia
+  body: json
+  auth: none
+}
+
+params:query {
+  ~limit: 15
+}
+
+body:json {
+  {
+      "costBasis": 100000.00,
+      "birthDate": "1944-12-30",
+      "jointBirthDate": "1945-03-12",
+      "ownerBirthDate": "1944-12-30",
+      "premiumPurchaseDate": "2025-04-14",
+      "firstPaymentDate": "2025-05-14",
+      "fundTypeCd": "N",
+      "returnOfPremiumCd": "GT",
+      "guaranteeCd": "RG",
+      "guaranteeYear": 10,
+      "guaranteeMonth": 0,
+      "income": 0,
+      "indexTypeCd": "N",
+      "jointTypeCd": "N",
+      "name": "Friend Client",
+      "jointName": "Jane Client",
+      "owner": "Mr. Fred Client",
+      "isOwnerPrimary": "Y",
+      "paymentFrequency": "M",
+      "percent": 100,
+      "jointPercent": 100,
+      "premium": 100000,
+      "preparedBy": "Mr Agent",
+      "regionCd": "CA",
+      "regionIssuedCd": "CA",
+      "requestDescription": "Fred Client Quote",
+      "gender": "M",
+      "jointGenderCd": "F",
+      "ownerGenderCd": "M",
+      "isSpouse": "Y",
+      "surveyTypeCd": "JL",
+      "returnOfPremiumRate": 0.0,
+      "isTest": "N"
+  }
+}
+
+vars:pre-request {
+  ~cannex_password: 1N0FGV0K4N048QE4Y0V3RY2MJB7XPJBS
+  ~username: AAUAT02
+}

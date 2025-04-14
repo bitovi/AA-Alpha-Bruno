@@ -1,0 +1,107 @@
+meta {
+  name: SPIA SOAP REQ UAT Quote
+  type: http
+  seq: 8
+}
+
+post {
+  url: https://wwwdev.cannex.com/devext/CANX/AntuService
+  body: xml
+  auth: none
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+    <s:Header>
+      <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" s:mustUnderstand="1">
+        <wsse:UsernameToken wsu:Id="UsernameToken-1">
+          <wsse:Username>AAUAT04</wsse:Username>
+          <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">{{password}}</wsse:Password>
+          <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">{{nonce}}</wsse:Nonce>
+          <wsu:Created>{{created}}</wsu:Created>
+        </wsse:UsernameToken>
+      </wsse:Security>
+    </s:Header>
+    <s:Body>
+      <cws:antu_request version="2.0" xmlns="http://www.cannex.com" xmlns:cws="http://www.cannex.com/ws">
+        <logon_id>AAUAT04</logon_id>
+        <user_id/>
+        <app>CANX</app>
+        <cost_basis>100000.00</cost_basis>
+        <birth_date>1944-12-30</birth_date>
+        <joint_birth_date>1945-03-12</joint_birth_date>
+        <owner_birth_date>1944-12-30</owner_birth_date>
+        <premium_purchase_date>2025-04-14</premium_purchase_date>
+        <first_payment_date>2025-05-14</first_payment_date>
+        <fund_type_cd>N</fund_type_cd>
+        <return_of_premium_cd>GT</return_of_premium_cd>
+        <guarantee_cd>RG</guarantee_cd>
+        <guarantee_year>10</guarantee_year>
+        <guarantee_month>0</guarantee_month>
+        <indicate_impaired/>
+        <income>0.0</income>
+        <index_rate/>
+        <index_type_cd>N</index_type_cd>
+        <joint_type_cd>N</joint_type_cd>
+        <name>Fred Client</name>
+        <joint_name>Jane Client</joint_name>
+        <owner>Mr. Fred Client</owner>
+        <is_owner_primary>Y</is_owner_primary>
+        <payment_frequency_cd>M</payment_frequency_cd>
+        <percent>100.000</percent>
+        <joint_percent>100.000</joint_percent>
+        <premium>100000.00</premium>
+        <prepared_by>Mr. Agent</prepared_by>
+        <region_cd>CA</region_cd>
+        <region_issued_cd>CA</region_issued_cd>
+        <request_description>Fred Client Quote</request_description>
+        <gender_cd>M</gender_cd>
+        <joint_gender_cd>F</joint_gender_cd>
+        <owner_gender_cd>M</owner_gender_cd>
+        <is_spouse>Y</is_spouse>
+        <survey_type_cd>JL</survey_type_cd>
+        <return_of_premium_rate>0.0</return_of_premium_rate>
+        <ratings_company_cd/>
+        <ratings_cd/>
+        <exclude_not_rated></exclude_not_rated>
+        <is_test>N</is_test>
+      </cws:antu_request>
+    </s:Body>
+  </s:Envelope>
+  
+}
+
+script:pre-request {
+  const crypto = require("crypto");
+  
+  
+  function computePasswordDigest(nonceBase64, created, password) {
+      // Decode Base64 Nonce
+      const nonce = Buffer.from(nonceBase64, "base64");
+  
+      // Convert Created & Password to UTF-8 Bytes
+      const createdBytes = Buffer.from(created, "utf8");
+      const passwordBytes = Buffer.from(password, "utf8");
+  
+      // Concatenate Nonce + Created + Password
+      const data = Buffer.concat([nonce, createdBytes, passwordBytes]);
+  
+      // Compute SHA1 Hash
+      const sha1Hash = crypto.createHash("sha1").update(data).digest();
+  
+      // Encode the result in Base64
+      return sha1Hash.toString("base64");
+  }
+  
+  function generateNonceAndCreated(length = 16) {
+      const nonce = crypto.randomBytes(length).toString("base64");
+      const created = new Date().toISOString(); // UTC timestamp in ISO 8601 format
+      return { nonce, created };
+  }
+  
+  const { nonce, created } = generateNonceAndCreated()
+  bru.setVar('nonce',nonce)
+  bru.setVar('created',created)
+  
+  bru.setVar('password',computePasswordDigest(nonce, created, 'BANBWM9I5GCTXK5RW9DQSDM2A9DCCYTZ')) 
+}
