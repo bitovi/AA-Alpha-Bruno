@@ -1,0 +1,104 @@
+meta {
+  name: Sample request in XML to service
+  type: http
+  seq: 13
+}
+
+post {
+  url: https://wwwdev.cannex.com/devext/CANX/AntuService
+  body: xml
+  auth: none
+}
+
+body:xml {
+  <?xml version="1.0" encoding="UTF-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+    <s:Header>
+      <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" s:mustUnderstand="1">
+        <wsse:UsernameToken wsu:Id="UsernameToken-1">
+          <wsse:Username>AAUAT04</wsse:Username>
+          <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">{{password}}</wsse:Password>
+          <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">{{nonce}}</wsse:Nonce>
+          <wsu:Created>{{created}}</wsu:Created>
+        </wsse:UsernameToken>
+      </wsse:Security>
+    </s:Header>
+    <s:Body>
+          <cws:antu_request version="1.0" xmlns="http://www.cannex.com" xmlns:cws="http://www.cannex.com/ws">
+              <logon_id>AAUAT04</logon_id>
+              <user_id/>
+              <app>CANX</app>
+              <birth_date>1944-12-30</birth_date>
+              <cost_basis>100000</cost_basis>
+              <first_payment_date>2025-05-12</first_payment_date>
+              <fund_type_cd>N</fund_type_cd>
+              <gender_cd>M</gender_cd>
+              <guarantee_cd>RG</guarantee_cd>
+              <guarantee_month>0</guarantee_month>
+              <guarantee_year>10</guarantee_year>
+              <income>0</income>
+              <index_type_cd>N</index_type_cd>
+              <is_owner_primary>Y</is_owner_primary>
+              <is_spouse>Y</is_spouse>
+              <joint_birth_date>1945-03-12</joint_birth_date>
+              <joint_gender_cd>F</joint_gender_cd>
+              <joint_name>Jane Client</joint_name>
+              <joint_type_cd>N</joint_type_cd>
+              <name>Friend Client</name>
+              <index_rate/>
+              <owner>Mr. Fred Client</owner>
+              <owner_birth_date>1944-12-30</owner_birth_date>
+              <owner_gender_cd>M</owner_gender_cd>
+              <payment_frequency_cd>M</payment_frequency_cd>
+              <percent>100</percent>
+              <premium>100000</premium>
+              <premium_purchase_date>2025-04-11</premium_purchase_date>
+              <prepared_by>Mr Agent</prepared_by>
+              <region_cd>CA</region_cd>
+              <region_issued_cd>CA</region_issued_cd>
+              <request_description>Fred Client Quote</request_description>
+              <return_of_premium_cd>GT</return_of_premium_cd>
+              <return_of_premium_rate>0</return_of_premium_rate>
+              <survey_type_cd>JL</survey_type_cd>
+              <ratings_company_cd/>
+              <ratings_cd/>
+              <exclude_not_rated></exclude_not_rated>
+              <is_test>N</is_test>
+          </cws:antu_request>
+      </s:Body>
+  </s:Envelope>
+}
+
+script:pre-request {
+  const crypto = require("crypto");
+  
+  
+  function computePasswordDigest(nonceBase64, created, password) {
+      // Decode Base64 Nonce
+      const nonce = Buffer.from(nonceBase64, "base64");
+  
+      // Convert Created & Password to UTF-8 Bytes
+      const createdBytes = Buffer.from(created, "utf8");
+      const passwordBytes = Buffer.from(password, "utf8");
+  
+      // Concatenate Nonce + Created + Password
+      const data = Buffer.concat([nonce, createdBytes, passwordBytes]);
+  
+      // Compute SHA1 Hash
+      const sha1Hash = crypto.createHash("sha1").update(data).digest();
+  
+      // Encode the result in Base64
+      return sha1Hash.toString("base64");
+  }
+  
+  function generateNonceAndCreated(length = 16) {
+      const nonce = crypto.randomBytes(length).toString("base64");
+      const created = new Date().toISOString(); // UTC timestamp in ISO 8601 format
+      return { nonce, created };
+  }
+  
+  const { nonce, created } = generateNonceAndCreated()
+  bru.setVar('nonce',nonce)
+  bru.setVar('created',created)
+  
+  bru.setVar('password',computePasswordDigest(nonce, created, 'BANBWM9I5GCTXK5RW9DQSDM2A9DCCYTZ')) 
+}
