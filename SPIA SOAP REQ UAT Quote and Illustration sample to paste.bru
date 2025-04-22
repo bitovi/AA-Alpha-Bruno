@@ -1,0 +1,70 @@
+meta {
+  name: SPIA SOAP REQ UAT Quote and Illustration sample to paste
+  type: http
+  seq: 14
+}
+
+post {
+  url: https://wwwdev.cannex.com/devext/CANX/IidAntuIllustrationService
+  body: xml
+  auth: none
+}
+
+body:xml {
+  <?xml version="1.0" encoding="utf-8"?>
+  <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cnx="http://www.cannex.com" xmlns:cws="http://www.cannex.com/ws" xmlns:cwsreq="http://www.cannex.com/wsreq" xmlns:cwsresp="http://www.cannex.com/wsresp">
+      <s:Header>
+          <wsse:Security s:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+              <wsse:UsernameToken xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="SecurityToken-2025-04-15T20:08:05Z">
+                  <wsse:Username>AAUAT04</wsse:Username>
+                  <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">/LdGzZOnemcLCfsOuocgoor0Mvk=</wsse:Password>
+                  <wsse:Nonce EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">pxEBhW7gHNqyDrMsvVb2hHzl+8g=</wsse:Nonce>
+                  <wsu:Created>2025-04-15T20:08:05Z</wsu:Created>
+              </wsse:UsernameToken>
+          </wsse:Security>
+      </s:Header>
+      <s:Body>
+          <cws:antu_iid_request xmlns="http://www.cannex.com" xmlns:cws="http://www.cannex.com/ws" version="1.0">
+              <logon_id>AAUAT04</logon_id>
+              <app>CANX</app>
+              <action>GET_ANTU_ILLUSTRATION_PDF</action>
+              <illustration_id>A5L41F07800000086818002038224</illustration_id>
+          </cws:antu_iid_request>
+      </s:Body>
+  </s:Envelope>
+}
+
+script:pre-request {
+  const crypto = require("crypto");
+  
+  
+  function computePasswordDigest(nonceBase64, created, password) {
+      // Decode Base64 Nonce
+      const nonce = Buffer.from(nonceBase64, "base64");
+  
+      // Convert Created & Password to UTF-8 Bytes
+      const createdBytes = Buffer.from(created, "utf8");
+      const passwordBytes = Buffer.from(password, "utf8");
+  
+      // Concatenate Nonce + Created + Password
+      const data = Buffer.concat([nonce, createdBytes, passwordBytes]);
+  
+      // Compute SHA1 Hash
+      const sha1Hash = crypto.createHash("sha1").update(data).digest();
+  
+      // Encode the result in Base64
+      return sha1Hash.toString("base64");
+  }
+  
+  function generateNonceAndCreated(length = 16) {
+      const nonce = crypto.randomBytes(length).toString("base64");
+      const created = new Date().toISOString(); // UTC timestamp in ISO 8601 format
+      return { nonce, created };
+  }
+  
+  const { nonce, created } = generateNonceAndCreated()
+  bru.setVar('nonce',nonce)
+  bru.setVar('created',created)
+  
+  bru.setVar('password',computePasswordDigest(nonce, created, 'BANBWM9I5GCTXK5RW9DQSDM2A9DCCYTZ')) 
+}
