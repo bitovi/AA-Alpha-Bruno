@@ -1,0 +1,26 @@
+meta {
+  name: SPIA Illustration
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:4000/cannex/spia/illustration
+  body: json
+  auth: none
+}
+
+params:query {
+  ~limit: 15
+}
+
+body:json {
+  {
+    "illustrationId": "A5LOSW078000000868180020382245"
+  }
+}
+
+vars:pre-request {
+  ~cannex_password: 1N0FGV0K4N048QE4Y0V3RY2MJB7XPJBS
+  ~username: AAUAT02
+}
