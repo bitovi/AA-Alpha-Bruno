@@ -1,0 +1,44 @@
+meta {
+  name: Income analysis
+  type: http
+  seq: 17
+}
+
+post {
+  url: http://localhost:4000/cannex/income-analysis
+  body: json
+  auth: none
+}
+
+params:query {
+  ~limit: 15
+}
+
+body:json {
+  [{
+    "contractCd": "S",
+    "premium": 250000,
+    "purchaseDate": "2025-06-01",
+    "genderCdPrimary": "M",
+  //   "genderCdJoint": "F",
+    "purchaseAgePrimary": 55,
+  //   "purchaseAgeJoint": 62,
+  //   "incomeStartAgePrimary": 76,
+  //   "incomeStartAgeJoint": 63,
+  //   "indexTimeRange": {
+  //     "startMonth": 6,
+  //     "startYear": 2025,
+  //     "endMonth": 6,
+  //     "endYear": 2035
+  //   },
+    "analysisCd": "A",
+    "antyDsVersionId": "CNLEGZ",
+    "analysisDataId": "0002296726",
+    "analysisTimeHorizonYears": 10
+  }]
+}
+
+vars:pre-request {
+  ~cannex_password: 1N0FGV0K4N048QE4Y0V3RY2MJB7XPJBS
+  ~username: AAUAT02
+}
