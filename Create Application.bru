@@ -1,0 +1,33 @@
+meta {
+  name: Create Application
+  type: http
+  seq: 25
+}
+
+post {
+  url: http://localhost:4000/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDIyMkFBQSIsImtpZCI6Imluc18ydlBKSGg4OUt5b1lodHpKcEdFcFBmM3U2WkgiLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vYml0b3ZpLWFhLWFscGhhLXdlYi1tYWluLTY1OTgyMTAzMi51cy1lYXN0LTEuZWxiLmFtYXpvbmF3cy5jb20iLCJleHAiOjIwNjc2MjU3NzIsImlhdCI6MTc1MjI2NTc3MiwiaXNzIjoiaHR0cHM6Ly9mYWN0dWFsLXNoYWQtNzUuY2xlcmsuYWNjb3VudHMuZGV2IiwianRpIjoiZjNhYjAyN2FiNzE0MzgzNmFiM2YiLCJuYmYiOjE3NTIyNjU3NjcsInN1YiI6InVzZXJfMnpqWGlIQUxsc1hVWUhMVXhvR3dQSk9sdTNwIn0.LFjJ-ZMQDrPlbMKFYGiailJQ23xZmBG17SQRp0meBSdg8MNplB35ZMfIQ31v2xCWADcCEV41Ykvv_URR1AaCzdNTWTo-IXZhoYFNQgvcnHPePPcGlwdquXLfiKIiJVEIXXzWfjPRCOSEF1PW-1Ttpcb9QR-S2OU4AusZXhuZjYgII8ljTjl4J2RFx0S1T8BJgekIAlg9_fwK6KFB65zuXhUP27zp4l0i64DzcHkYhTKXr356yCMLfg0mFvld3HBflQws9pcNIA_yOBQmRY4hH7NYs1WkIMeqGMPVWIeLYqRxhk_IlUw7YFAqTe-3NQPoSY3tiXTPTtlbxlDQVRF6sQ
+}
+
+body:json {
+  {
+    "expiryDate": "2025-07-21T19:07:13Z",
+    "institutionId": 1043,
+    "productInstanceId": 99999,
+    "productName": "test product",
+    "productType": "FIA",
+    "premium": 200000,
+    "hasIncomeRider": true,
+    "mandatoryIncomeRider": false,
+    "incomeBenefitProfileVendorID": "123456",
+    "applicationStrategyRateElections": [{
+      "strategyRateInstanceId": 88888,
+      "allocationAmount": 200000
+    }]
+  }
+}
