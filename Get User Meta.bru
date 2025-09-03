@@ -1,0 +1,31 @@
+meta {
+  name: Get User Meta
+  type: http
+  seq: 36
+}
+
+get {
+  url: http://bitovi-aa-alpha-engine-main-454017777.us-east-1.elb.amazonaws.com/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDIyMkFBQSIsImtpZCI6Imluc18ydlBKSGg4OUt5b1lodHpKcEdFcFBmM3U2WkgiLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vYml0b3ZpLWFhLWFscGhhLXdlYi1tYWluLTY1OTgyMTAzMi51cy1lYXN0LTEuZWxiLmFtYXpvbmF3cy5jb20iLCJleHAiOjIwNjc2MjU3NzIsImlhdCI6MTc1MjI2NTc3MiwiaXNzIjoiaHR0cHM6Ly9mYWN0dWFsLXNoYWQtNzUuY2xlcmsuYWNjb3VudHMuZGV2IiwianRpIjoiZjNhYjAyN2FiNzE0MzgzNmFiM2YiLCJuYmYiOjE3NTIyNjU3NjcsInN1YiI6InVzZXJfMnpqWGlIQUxsc1hVWUhMVXhvR3dQSk9sdTNwIn0.LFjJ-ZMQDrPlbMKFYGiailJQ23xZmBG17SQRp0meBSdg8MNplB35ZMfIQ31v2xCWADcCEV41Ykvv_URR1AaCzdNTWTo-IXZhoYFNQgvcnHPePPcGlwdquXLfiKIiJVEIXXzWfjPRCOSEF1PW-1Ttpcb9QR-S2OU4AusZXhuZjYgII8ljTjl4J2RFx0S1T8BJgekIAlg9_fwK6KFB65zuXhUP27zp4l0i64DzcHkYhTKXr356yCMLfg0mFvld3HBflQws9pcNIA_yOBQmRY4hH7NYs1WkIMeqGMPVWIeLYqRxhk_IlUw7YFAqTe-3NQPoSY3tiXTPTtlbxlDQVRF6sQ
+}
+
+body:json {
+  {
+    "state": "VA",
+    "gender": "male",
+    "dateOfBirth": "1970-07-11T00:00:00.000Z",
+    "age": 55,
+    "maritalStatus": "single",
+    "personaType": "growth",
+    "spouse": {
+      "dateOfBirth": "1970-11-10T00:00:00.000Z",
+      "age": 54,
+      "gender": "female"
+    }
+  }
+}
