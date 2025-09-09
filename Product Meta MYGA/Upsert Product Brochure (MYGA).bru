@@ -1,0 +1,19 @@
+meta {
+  name: Upsert Product Brochure (MYGA)
+  type: http
+  seq: 37
+}
+
+post {
+  url: http://bitovi-aa-alpha-engine-main-454017777.us-east-1.elb.amazonaws.com/meta/myga/A00148/uploadBrochure
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  brochure: @file(/Users/jebbers/Downloads/American_Equity_AssetShield_7_06_10_2025.pdf)
+}
+
+settings {
+  encodeUrl: true
+}

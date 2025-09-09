@@ -1,0 +1,22 @@
+meta {
+  name: Upsert Product Meta (MYGA)
+  type: http
+  seq: 37
+}
+
+post {
+  url: http://bitovi-aa-alpha-engine-main-454017777.us-east-1.elb.amazonaws.com/meta/myga/A00148
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "aaSelect": true,
+    "url": "https://www.example.com"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
