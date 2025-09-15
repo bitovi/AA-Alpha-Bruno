@@ -1,0 +1,15 @@
+meta {
+  name: Get Carriers Meta By Carrier Id
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/meta/carriers/:carrierId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  carrierId: cmfl62z4b000duprpi36s5ac9
+}
