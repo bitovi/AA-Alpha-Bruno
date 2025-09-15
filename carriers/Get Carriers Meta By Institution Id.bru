@@ -1,0 +1,15 @@
+meta {
+  name: Get Carriers Meta By Institution Id
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/meta/carriers/:carrierId
+  body: none
+  auth: none
+}
+
+params:path {
+  carrierId: 1049
+}

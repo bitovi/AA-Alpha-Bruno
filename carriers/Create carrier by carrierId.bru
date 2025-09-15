@@ -1,0 +1,21 @@
+meta {
+  name: Create carrier by carrierId
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{base_url}}/meta/carriers/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+body:json {
+  {
+    "inceptionYear": 2018
+  }
+}
