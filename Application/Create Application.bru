@@ -1,11 +1,11 @@
 meta {
-  name: Upsert User Meta
+  name: Create Application
   type: http
-  seq: 35
+  seq: 13
 }
 
-put {
-  url: http://localhost:4000/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p
+post {
+  url: http://localhost:4000/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application
   body: json
   auth: bearer
 }
@@ -16,16 +16,18 @@ auth:bearer {
 
 body:json {
   {
-    "state": "VA",
-    "gender": "male",
-    "dateOfBirth": "1970-07-11T00:00:00.000Z",
-    "age": 55,
-    "maritalStatus": "single",
-    "personaType": "growth",
-    "spouse": {
-      "dateOfBirth": "1970-11-10T00:00:00.000Z",
-      "age": 54,
-      "gender": "female"
-    }
+    "expiryDate": "2025-07-21T19:07:13Z",
+    "institutionId": 1043,
+    "productInstanceId": 99999,
+    "productName": "test product",
+    "productType": "FIA",
+    "premium": 200000,
+    "hasIncomeRider": true,
+    "mandatoryIncomeRider": false,
+    "incomeBenefitProfileVendorID": "123456",
+    "applicationStrategyRateElections": [{
+      "strategyRateInstanceId": 88888,
+      "allocationAmount": 200000
+    }]
   }
 }
