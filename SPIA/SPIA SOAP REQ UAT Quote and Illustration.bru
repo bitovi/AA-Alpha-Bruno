@@ -1,11 +1,11 @@
 meta {
-  name: SOAPReq UAT
+  name: SPIA SOAP REQ UAT Quote and Illustration
   type: http
-  seq: 11
+  seq: 7
 }
 
 post {
-  url: https://wwwdev.cannex.com/devext/CANX/AntyInc1Service
+  url: https://wwwdev.cannex.com/devext/CANX/IidAntuIllustrationService
   body: xml
   auth: none
 }
@@ -23,34 +23,15 @@ body:xml {
       </wsse:Security>
     </s:Header>
     <s:Body>
-      <cws:anty_income_request1 xmlns="http://www.cannex.com" xmlns:cws="http://www.cannex.com/ws" version="1.0">
-        <income_request1_set>
-          <logon_id>AAUAT04</logon_id>
-          <user_id/>
-          <transaction_id>37a161cc-de65-4ee0-a88f-8c6bcfde0a01</transaction_id>
-          <income_request_data>
-            <state_cd>AL</state_cd>
-            <contract_cd>S</contract_cd>
-            <premium>100.0</premium>
-            <purchase_date>2023-04-27</purchase_date>
-            <gender_cd_primary>M</gender_cd_primary>
-            <purchase_age_primary>50</purchase_age_primary>
-            <income_start_age_primary>55</income_start_age_primary>
-          </income_request_data>
-          <anty_ds_version_id>A4VF3H</anty_ds_version_id>
-          <analysis_data_id>0017960796</analysis_data_id>
-          <cnx_sequence_id>0</cnx_sequence_id>
-          <cnx_sequence_id>1</cnx_sequence_id>
-          <is_test>N</is_test>
-        </income_request1_set>
-      </cws:anty_income_request1>
+      <cws:antu_iid_request version="1.0" xmlns="http://www.cannex.com" xmlns:cws="http://www.cannex.com/ws">
+        <action>GET_ANTU_ILLUSTRATION_PDF</action>
+        <logon_id>AAUAT04</logon_id>
+        <app>CANX</app>
+        <illustration_id>A5L41F078000000868180020382245</illustration_id>
+        <is_test>N</is_test>
+      </cws:antu_iid_request>
     </s:Body>
   </s:Envelope>
-}
-
-vars:pre-request {
-  ~cannex_password: 1N0FGV0K4N048QE4Y0V3RY2MJB7XPJBS
-  ~username: AAUAT02
 }
 
 script:pre-request {
@@ -85,5 +66,5 @@ script:pre-request {
   bru.setVar('nonce',nonce)
   bru.setVar('created',created)
   
-  bru.setVar('password',computePasswordDigest(nonce, created, 'KKCK3NN3OF9LOI59LVLS90SF9EBO4JCN')) 
+  bru.setVar('password',computePasswordDigest(nonce, created, 'BANBWM9I5GCTXK5RW9DQSDM2A9DCCYTZ')) 
 }

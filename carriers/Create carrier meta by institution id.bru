@@ -1,21 +1,21 @@
 meta {
   name: Create carrier meta by institution id
   type: http
-  seq: 4
+  seq: 3
 }
 
 post {
-  url: {{base_url}}/meta/carriers/:institutionId
+  url: {{base_url}}/meta/carriers/{{institutionId}}
   body: json
   auth: inherit
-}
-
-params:path {
-  institutionId: 1049
 }
 
 body:json {
   {
     "inceptionYear": 2018
   }
+}
+
+vars:pre-request {
+  institutionId: 1049
 }

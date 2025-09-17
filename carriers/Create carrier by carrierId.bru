@@ -5,17 +5,17 @@ meta {
 }
 
 post {
-  url: {{base_url}}/meta/carriers/:id
+  url: {{base_url}}/meta/carriers/{{carrierId}}
   body: json
   auth: inherit
-}
-
-params:path {
-  id: 
 }
 
 body:json {
   {
     "inceptionYear": 2018
   }
+}
+
+vars:pre-request {
+  carrierId: cmfefq1v8000do80jp734k0iq
 }

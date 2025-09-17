@@ -1,11 +1,11 @@
 meta {
-  name: Set Application Personal Information
+  name: Upsert User Meta
   type: http
-  seq: 29
+  seq: 17
 }
 
 put {
-  url: http://localhost:4000/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application/cmdf320nr0000o1h7dpqf8ywu/personalInformation
+  url: http://localhost:4000/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p
   body: json
   auth: bearer
 }
@@ -16,25 +16,16 @@ auth:bearer {
 
 body:json {
   {
-    "firstName": "First",
-    "lastName": "Last",
+    "state": "VA",
     "gender": "male",
+    "dateOfBirth": "1970-07-11T00:00:00.000Z",
+    "age": 55,
     "maritalStatus": "single",
-    "dateOfBirth": "1970-07-22T00:00:00Z",
-    "email": "test@email.com",
-    "phoneNumber": "555-444-5555",
-    "phoneType": "mobile",
-    "occupation": "QA Engineer",
-    "residencyStatus": "us-citizen",
-    "ownerSigner": "self",
-    "residentialAddress": "222 Some St",
-    "city": "Truth or Consequences",
-    "state": "NM",
-    "zipCode": "11111",
-    "isMailingAddressSameAsResidential": false,
-    "mailingAddress": "333 Other Dr",
-    "mailingCity": "Your Hometown",
-    "mailingZipCode": "22222",
-    "mailingState": "AK"
+    "personaType": "growth",
+    "spouse": {
+      "dateOfBirth": "1970-11-10T00:00:00.000Z",
+      "age": 54,
+      "gender": "female"
+    }
   }
 }

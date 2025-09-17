@@ -1,15 +1,15 @@
 meta {
   name: Get Carriers Meta By Institution Id
   type: http
-  seq: 1
+  seq: 2
 }
 
 get {
-  url: {{base_url}}/meta/carriers/:carrierId
+  url: {{base_url}}/meta/carriers/{{institutionId}}
   body: none
   auth: none
 }
 
-params:path {
-  carrierId: 1049
+vars:pre-request {
+  institutionId: 1049
 }

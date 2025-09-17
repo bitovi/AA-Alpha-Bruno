@@ -1,11 +1,11 @@
 meta {
-  name: SPIA SOAP REQ UAT Quote and Illustration
+  name: SPIA SOAP REQ UAT Quote
   type: http
-  seq: 10
+  seq: 7
 }
 
 post {
-  url: https://wwwdev.cannex.com/devext/CANX/IidAntuIllustrationService
+  url: https://wwwdev.cannex.com/devext/CANX/AntuService
   body: xml
   auth: none
 }
@@ -23,15 +23,52 @@ body:xml {
       </wsse:Security>
     </s:Header>
     <s:Body>
-      <cws:antu_iid_request version="1.0" xmlns="http://www.cannex.com" xmlns:cws="http://www.cannex.com/ws">
-        <action>GET_ANTU_ILLUSTRATION_PDF</action>
+      <cws:antu_request version="2.0" xmlns="http://www.cannex.com" xmlns:cws="http://www.cannex.com/ws">
         <logon_id>AAUAT04</logon_id>
+        <user_id/>
         <app>CANX</app>
-        <illustration_id>A5L41F078000000868180020382245</illustration_id>
+        <cost_basis>100000.00</cost_basis>
+        <birth_date>1944-12-30</birth_date>
+        <joint_birth_date>1945-03-12</joint_birth_date>
+        <owner_birth_date>1944-12-30</owner_birth_date>
+        <premium_purchase_date>2025-05-16</premium_purchase_date>
+        <first_payment_date>2025-06-16</first_payment_date>
+        <fund_type_cd>N</fund_type_cd>
+        <return_of_premium_cd>GT</return_of_premium_cd>
+        <guarantee_cd>RG</guarantee_cd>
+        <guarantee_year>10</guarantee_year>
+        <guarantee_month>0</guarantee_month>
+        <indicate_impaired/>
+        <income>0.0</income>
+        <index_rate/>
+        <index_type_cd>N</index_type_cd>
+        <joint_type_cd>N</joint_type_cd>
+        <name>Fred Client</name>
+        <joint_name>Jane Client</joint_name>
+        <owner>Mr. Fred Client</owner>
+        <is_owner_primary>Y</is_owner_primary>
+        <payment_frequency_cd>M</payment_frequency_cd>
+        <percent>100.000</percent>
+        <joint_percent>100.000</joint_percent>
+        <premium>100000.00</premium>
+        <prepared_by>Mr. Agent</prepared_by>
+        <region_cd>CA</region_cd>
+        <region_issued_cd>CA</region_issued_cd>
+        <request_description>Fred Client Quote</request_description>
+        <gender_cd>M</gender_cd>
+        <joint_gender_cd>F</joint_gender_cd>
+        <owner_gender_cd>M</owner_gender_cd>
+        <is_spouse>Y</is_spouse>
+        <survey_type_cd>JL</survey_type_cd>
+        <return_of_premium_rate>0.0</return_of_premium_rate>
+        <ratings_company_cd/>
+        <ratings_cd/>
+        <exclude_not_rated></exclude_not_rated>
         <is_test>N</is_test>
-      </cws:antu_iid_request>
+      </cws:antu_request>
     </s:Body>
   </s:Envelope>
+  
 }
 
 script:pre-request {
