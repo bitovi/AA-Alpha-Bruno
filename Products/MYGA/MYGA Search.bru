@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: {{base_url}}/v2/cannex/myga?page=1&limit=1&carrierRating=A%2B
+  url: {{base_url}}/v2/cannex/myga?page=1&limit=1&state=AL
   body: json
   auth: none
 }
@@ -13,9 +13,9 @@ get {
 params:query {
   page: 1
   limit: 1
-  carrierRating: A%2B
+  state: AL
+  ~carrierRating: A%2B
   ~limit: 15
-  ~state: FL
   ~age: 93
   ~investmentTerms: 3
   ~freeWithdrawals: false
