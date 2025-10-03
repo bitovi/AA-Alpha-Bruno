@@ -1,0 +1,17 @@
+meta {
+  name: Fetch a beneficiary
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/users/:id/application/:applicationId/beneficiaries/:beneficiaryId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
+  applicationId: app-1
+  beneficiaryId: wduQt6eUADXn
+}
