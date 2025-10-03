@@ -1,0 +1,17 @@
+meta {
+  name: Delete a beneficiary
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{base_url}}/:id/application/:applicationId/beneficiaries/:beneficiaryId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
+  applicationId: cmdf320nr0000o1h7dpqf8ywu
+  beneficiaryId: 8M0k7CcFgDiV
+}
