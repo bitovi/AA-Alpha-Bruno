@@ -4,14 +4,18 @@ meta {
   seq: 4
 }
 
-get {
+delete {
   url: {{base_url}}/users/:id/application/:applicationId/beneficiaries/:beneficiaryId
   body: none
-  auth: inherit
+  auth: bearer
 }
 
 params:path {
   id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
   applicationId: app-1
-  beneficiaryId: wduQt6eUADXn
+  beneficiaryId: uJLpVhJAc3Uo
+}
+
+auth:bearer {
+  token: eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDIyMkFBQSIsImtpZCI6Imluc18ydlBKSGg4OUt5b1lodHpKcEdFcFBmM3U2WkgiLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwOi8vYml0b3ZpLWFhLWFscGhhLXdlYi1tYWluLTY1OTgyMTAzMi51cy1lYXN0LTEuZWxiLmFtYXpvbmF3cy5jb20iLCJleHAiOjIwNjc2MjU3NzIsImlhdCI6MTc1MjI2NTc3MiwiaXNzIjoiaHR0cHM6Ly9mYWN0dWFsLXNoYWQtNzUuY2xlcmsuYWNjb3VudHMuZGV2IiwianRpIjoiZjNhYjAyN2FiNzE0MzgzNmFiM2YiLCJuYmYiOjE3NTIyNjU3NjcsInN1YiI6InVzZXJfMnpqWGlIQUxsc1hVWUhMVXhvR3dQSk9sdTNwIn0.LFjJ-ZMQDrPlbMKFYGiailJQ23xZmBG17SQRp0meBSdg8MNplB35ZMfIQ31v2xCWADcCEV41Ykvv_URR1AaCzdNTWTo-IXZhoYFNQgvcnHPePPcGlwdquXLfiKIiJVEIXXzWfjPRCOSEF1PW-1Ttpcb9QR-S2OU4AusZXhuZjYgII8ljTjl4J2RFx0S1T8BJgekIAlg9_fwK6KFB65zuXhUP27zp4l0i64DzcHkYhTKXr356yCMLfg0mFvld3HBflQws9pcNIA_yOBQmRY4hH7NYs1WkIMeqGMPVWIeLYqRxhk_IlUw7YFAqTe-3NQPoSY3tiXTPTtlbxlDQVRF6sQ
 }
