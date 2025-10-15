@@ -1,0 +1,48 @@
+meta {
+  name: chillpiper
+  type: http
+  seq: 8
+}
+
+post {
+  url: https://annuityassociation.chilipiper.com/concierge-router/simple-router/rest
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+  {
+    "form": {
+      "application_investment": 100000,
+      "application_date": "2025-10-15",
+      "application_state": "FL",
+      "application_term": 5,
+      "application_type": "MYGA",
+      "nesteasy_url": "https://annuityassurancedirect.com/annuities/growth/myga/details/2616284-37134973?state=FL&gender=male&dateOfBirth=1963-09-30T03%3A59%3A59.999Z&maritalStatus=single&investmentGoal=growth&investmentAmount=100000",
+      "product_name": "Safe Harbor Bonus Guarantee",
+      "product_carrier_name": "Atlantic Coast Life",
+      "product_other_fields": "foo | bar",
+      "contact_first_name": "John",
+      "contact_last_name": "Doe",
+      "contact_gender": "male",
+      "contact_birth_date": "1960-07-03",
+      "contact_email": "john@doe.com",
+      "contact_phone_number": "555-555-5555",
+      "contact_residential_address": "1234 somewhere",
+      "contact_city": "Orlando",
+      "contact_residential_state": "FL",
+      "contact_residential_zip_code": "55555",
+      "contact_mailing_address": "1234 somewhere",
+      "contact_mailing_city": "Orlando",
+      "contact_mailing_zip_code": "555555",
+      "contact_mailing_state": "FL",
+      "contact_other_fields": "",
+      "applicant_type": "person",
+      "beneficiaries": "foo bar"
+    },
+    "options": {
+  
+    }
+  }
+}
