@@ -1,11 +1,11 @@
 meta {
-  name: Create Application
+  name: Set Application Entity Information Partial Update
   type: http
-  seq: 13
+  seq: 8
 }
 
-post {
-  url: {{base_url}}/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application
+put {
+  url: {{base_url}}/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application/cmgh1xypa0000o60jknu5emde/entityInformation
   body: json
   auth: bearer
 }
@@ -16,19 +16,8 @@ auth:bearer {
 
 body:json {
   {
-    "annuityVariantId": "fake-id",
-    "expiryDate": "2025-07-21T19:07:13Z",
-    "institutionId": 1043,
-    "productInstanceId": 99999,
-    "productName": "test product",
-    "productType": "MYGA",
-    "premium": 200000,
-    "hasIncomeRider": true,
-    "mandatoryIncomeRider": false,
-    "incomeBenefitProfileVendorID": "123456",
-    "applicationStrategyRateElections": [{
-      "strategyRateInstanceId": 88888,
-      "allocationAmount": 200000
-    }]
+    "name": "Test Name",
+    "dateEstablished": "2025-07-22T22:07:50Z",
+    "email": "testnowhere.com"
   }
 }

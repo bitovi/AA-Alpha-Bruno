@@ -1,13 +1,19 @@
 meta {
-  name: Create Application
+  name: Update benefeciary Partial Update
   type: http
-  seq: 13
+  seq: 6
 }
 
-post {
-  url: {{base_url}}/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application
+put {
+  url: {{base_url}}/users/:id/application/:applicationId/beneficiaries/:benefeciaryId
   body: json
   auth: bearer
+}
+
+params:path {
+  benefeciaryId: btQ3f5B8OdAc
+  id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
+  applicationId: app-1
 }
 
 auth:bearer {
@@ -16,19 +22,16 @@ auth:bearer {
 
 body:json {
   {
-    "annuityVariantId": "fake-id",
-    "expiryDate": "2025-07-21T19:07:13Z",
-    "institutionId": 1043,
-    "productInstanceId": 99999,
-    "productName": "test product",
-    "productType": "MYGA",
-    "premium": 200000,
-    "hasIncomeRider": true,
-    "mandatoryIncomeRider": false,
-    "incomeBenefitProfileVendorID": "123456",
-    "applicationStrategyRateElections": [{
-      "strategyRateInstanceId": 88888,
-      "allocationAmount": 200000
-    }]
+      "beneficiaryType": "person",
+      "email": "john.doe@example.com",
+      "phoneNumber": "5551234567",
+      "dateOfBirth": "1980-01-01T00:00:00.000Z",
+      "gender": "female",
+      "city": "Austin",
+      "residentialAddress": "122333 somewhere",
+      "stateOfResidence": "TX",
+      "zipCode": "78701",
+      "relationship": "spouse",
+      "allocationPercentage": "50"
   }
 }
