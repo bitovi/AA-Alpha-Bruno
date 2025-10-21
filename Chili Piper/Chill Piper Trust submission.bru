@@ -1,0 +1,44 @@
+meta {
+  name: Chill Piper Trust submission
+  type: http
+  seq: 8
+}
+
+post {
+  url: https://annuityassociation.chilipiper.com/concierge-router/simple-router/rest
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "form": {
+      "application_investment": 100000,
+      "application_date": "2025-10-17T14:50:25.857Z",
+      "application_state": "NY",
+      "application_term": "",
+      "product_type": "MYGA",
+      "product_details_url": "https://annuityassurancedirect.com//annuities/growth/myga/details/abc-123",
+      "product_name": "Fake Product Name 1",
+      "product_carrier_name": "",
+      "product_other_fields": "Rate: : \nRiders: : ",
+      "primary_beneficiaries": "Beneficiary 1 (Person)\ncity: Austin\nemail: jane.doe@example.com\ngender: female\nzipCode: 78701\nlastName: Doe\nfirstName: Jane\nmiddleName: Q\ndateOfBirth: 1980-01-01T00:00:00.000Z\nphoneNumber: 5551234567\nrelationship: spouse\nbeneficiaryId: 9AIYDBMhc5DJ\nbeneficiaryType: person\nstateOfResidence: TX\nresidentialAddress: 122333 somewhere\nallocationPercentage: 100",
+      "contingent_beneficiaries": "",
+      "applicant_type": "trust",
+      "company_trust_name": "Fake Name",
+      "trust_phone": 5551113333,
+      "email": "jebbers@bitovi.com",
+      "trust_email": "test@notreal.com",
+      "contact_first_name": "Jason",
+      "contact_first_las_name": "Ebbers",
+      "trust_address": "333 Main St",
+      "trust_city": "Finger Lakes",
+      "trust_state": "NY",
+      "trust_zip_code": "00000",
+      "trust_other_fields": "Date Established: : 2024-07-22T22:07:50.000Z\nPhone Type: : home"
+    },
+    "options": {
+      "dynamicRedirectLink": "https://annuityassurancedirect.com//apply/myga/abc-123/success?applicationId=cmguyu4zl0000upevojv4ljp6"
+    }
+  }
+}
