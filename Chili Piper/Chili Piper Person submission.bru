@@ -1,0 +1,48 @@
+meta {
+  name: Chili Piper Person submission
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://annuityassociation.chilipiper.com/concierge-router/simple-router/rest
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "form": {
+      "application_investment": 100000,
+      "application_date": "2025-10-17T15:04:42.623Z",
+      "application_state": "NM",
+      "application_term": 10,
+      "product_type": "MYGA",
+      "product_details_url": "https://annuityassurancedirect.com//annuities/growth/myga/details/abc-123",
+      "product_name": "Fake Product Name 1",
+      "product_carrier_name": "",
+      "product_other_fields": "Rate: : \nRiders: : ",
+      "primary_beneficiaries": "Beneficiary 1 (Person)\ncity: Austin\nemail: jane.doe@example.com\ngender: female\nzipCode: 78701\nlastName: Doe\nfirstName: Jane\nmiddleName: Q\ndateOfBirth: 1980-01-01T00:00:00.000Z\nphoneNumber: 5551234567\nrelationship: spouse\nbeneficiaryId: HFt435bEKCPJ\nbeneficiaryType: person\nstateOfResidence: TX\nresidentialAddress: 122333 somewhere\nallocationPercentage: 100",
+      "contingent_beneficiaries": "",
+      "applicant_type": "person",
+      "contact_first_name": "John",
+      "contact_last_name": "Doe",
+      "contact_gender": "male",
+      "contact_birth_date": "1970-07-23T00:00:00.000Z",
+      "email": "john.doe@fakeemail.com",
+      "contact_phone_number": "5554325555",
+      "contact_residential_address": "222 My St",
+      "contact_city": "My City",
+      "contact_residential_state": "NM",
+      "contact_residential_zip_code": "86753",
+      "contact_mailing_address": "09 Fake Dr",
+      "contact_mailing_city": "Your City",
+      "contact_mailing_zip_code": "75309",
+      "contact_mailing_state": "NM",
+      "contact_other_fields": "Marital Status : single\nPhone Type: : mobile\nResidency Status: : us-citizen\nEmployment Status: : Test Occupation\nOwner Signed: : self"
+    },
+    "options": {
+      "dynamicRedirectLink": "https://annuityassurancedirect.com//apply/myga/abc-123/success?applicationId=cmguzci2m0000upzhpzdceogd"
+    }
+  }
+}
