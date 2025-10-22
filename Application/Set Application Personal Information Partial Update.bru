@@ -1,11 +1,11 @@
 meta {
-  name: Set Application Entity Information
+  name: Set Application Personal Information Partial Update
   type: http
-  seq: 4
+  seq: 9
 }
 
 put {
-  url: {{base_url}}/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application/cmdf320nr0000o1h7dpqf8ywu/entityInformation
+  url: {{base_url}}/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application/cmggqeizl0000moxoo68cnqhf/personalInformation
   body: json
   auth: bearer
 }
@@ -16,14 +16,9 @@ auth:bearer {
 
 body:json {
   {
-    "name": "Test Name",
-    "dateEstablished": "2025-07-22T22:07:50Z",
-    "address": "123 Main St",
-    "state": "VA",
-    "zipCode": "00123",
-    "city": "Hometown",
-    "phoneNumber": "(555) 222-3333",
-    "phoneType": "home",
-    "email": "test@nowhere.com"
+    "firstName": "First",
+    "lastName": "Last",
+    "gender": "male",
+    "email": "foobar"
   }
 }

@@ -1,13 +1,18 @@
 meta {
-  name: Set Application Entity Information
+  name: Create beneficiary Partial Update
   type: http
-  seq: 4
+  seq: 5
 }
 
-put {
-  url: {{base_url}}/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application/cmdf320nr0000o1h7dpqf8ywu/entityInformation
+post {
+  url: {{base_url}}/users/:id/application/:applicationId/beneficiaries
   body: json
   auth: bearer
+}
+
+params:path {
+  id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
+  applicationId: app-1
 }
 
 auth:bearer {
@@ -16,14 +21,9 @@ auth:bearer {
 
 body:json {
   {
-    "name": "Test Name",
-    "dateEstablished": "2025-07-22T22:07:50Z",
-    "address": "123 Main St",
-    "state": "VA",
-    "zipCode": "00123",
-    "city": "Hometown",
-    "phoneNumber": "(555) 222-3333",
-    "phoneType": "home",
-    "email": "test@nowhere.com"
+      "beneficiaryType": "person",
+      "firstName": "John",
+      "lastName": "Doe",
+      "allocationPercentage": "100"
   }
 }
