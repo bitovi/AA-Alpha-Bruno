@@ -1,0 +1,16 @@
+meta {
+  name: Submit Appplication
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}//:id/application/:applicationId/submit
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
+  applicationId: app-1
+}
