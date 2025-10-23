@@ -5,9 +5,14 @@ meta {
 }
 
 get {
-  url: {{base_url}}/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/applicationByAnnuityVariantId/test-id
+  url: {{base_url}}/users/:id/applicationByAnnuityVariantId/:annuityVariantId
   body: none
   auth: bearer
+}
+
+params:path {
+  annuityVariantId: 2524812-33377271
+  id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
 }
 
 auth:bearer {
