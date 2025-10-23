@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: http://localhost:4000/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application
+  url: {{base_url}}/users/:id/application
   body: json
   auth: bearer
+}
+
+params:path {
+  id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
 }
 
 auth:bearer {
@@ -16,11 +20,11 @@ auth:bearer {
 
 body:json {
   {
-    "annuityVariantId": "test-id",
+    "annuityVariantId": "2524812-33377271",
     "expiryDate": "2025-07-21T19:07:13Z",
-    "institutionId": 1043,
-    "productInstanceId": 99999,
-    "productName": "test product",
+    "institutionId": 1138,
+    "productInstanceId": 2524562,
+    "productName": "Secure Savings Elite",
     "productType": "MYGA",
     "premium": 200000,
     "hasIncomeRider": true,

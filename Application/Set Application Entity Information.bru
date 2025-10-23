@@ -5,9 +5,14 @@ meta {
 }
 
 put {
-  url: http://localhost:4000/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application/cmdf320nr0000o1h7dpqf8ywu/entityInformation
+  url: {{base_url}}/users/:id/application/:applicationId/entityInformation
   body: json
   auth: bearer
+}
+
+params:path {
+  applicationId: cmdf320nr0000o1h7dpqf8ywu
+  id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
 }
 
 auth:bearer {
