@@ -1,17 +1,13 @@
 meta {
-  name: Create Application
+  name: Set Application Personal Information Partial Update
   type: http
-  seq: 13
+  seq: 9
 }
 
-post {
-  url: {{base_url}}/users/:id/application
+put {
+  url: {{base_url}}/users/user_2zjXiHALlsXUYHLUxoGwPJOlu3p/application/cmggqeizl0000moxoo68cnqhf/personalInformation
   body: json
   auth: bearer
-}
-
-params:path {
-  id: user_2zjXiHALlsXUYHLUxoGwPJOlu3p
 }
 
 auth:bearer {
@@ -20,19 +16,9 @@ auth:bearer {
 
 body:json {
   {
-    "annuityVariantId": "2524812-33377271",
-    "expiryDate": "2025-07-21T19:07:13Z",
-    "institutionId": 1138,
-    "productInstanceId": 2524562,
-    "productName": "Secure Savings Elite",
-    "productType": "MYGA",
-    "premium": 200000,
-    "hasIncomeRider": true,
-    "mandatoryIncomeRider": false,
-    "incomeBenefitProfileVendorID": "123456",
-    "applicationStrategyRateElections": [{
-      "strategyRateInstanceId": 88888,
-      "allocationAmount": 200000
-    }]
+    "firstName": "First",
+    "lastName": "Last",
+    "gender": "male",
+    "email": "foobar"
   }
 }
