@@ -1,0 +1,20 @@
+meta {
+  name: Get carrier meta information
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{base_url}}/meta/carriers/:institutionId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  institutionId: 1173
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

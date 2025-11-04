@@ -1,13 +1,17 @@
 meta {
   name: Upsert Product Meta (MYGA)
   type: http
-  seq: 37
+  seq: 4
 }
 
 post {
-  url: http://bitovi-aa-alpha-engine-main-454017777.us-east-1.elb.amazonaws.com/meta/myga/A00148
+  url: {{base_url}}/meta/myga/:vendorProductId
   body: json
   auth: inherit
+}
+
+params:path {
+  vendorProductId: A001BZ
 }
 
 body:json {
@@ -19,4 +23,5 @@ body:json {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

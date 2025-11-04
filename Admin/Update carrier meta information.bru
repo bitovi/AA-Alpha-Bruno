@@ -1,0 +1,26 @@
+meta {
+  name: Update carrier meta information
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{base_url}}/meta/carriers/:institutionId
+  body: json
+  auth: inherit
+}
+
+params:path {
+  institutionId: 1173
+}
+
+body:json {
+  {
+    "inceptionYear": 1990
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
