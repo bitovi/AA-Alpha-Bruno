@@ -1,13 +1,17 @@
 meta {
   name: Upsert Product Brochure (MYGA)
   type: http
-  seq: 37
+  seq: 2
 }
 
 post {
-  url: http://bitovi-aa-alpha-engine-main-454017777.us-east-1.elb.amazonaws.com/meta/myga/A00148/uploadBrochure
+  url: {{base_url}}/meta/myga/:vendorProductId/uploadBrochure
   body: multipartForm
   auth: inherit
+}
+
+params:path {
+  vendorProductId: A00148
 }
 
 body:multipart-form {
@@ -16,4 +20,5 @@ body:multipart-form {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

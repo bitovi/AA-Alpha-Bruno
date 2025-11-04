@@ -1,0 +1,24 @@
+meta {
+  name: Upload carrier logo
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/carriers//:institutionId/uploadLogo
+  body: multipartForm
+  auth: inherit
+}
+
+params:path {
+  institutionId: 1173
+}
+
+body:multipart-form {
+  logo: @file(/Users/cherif/Downloads/wichita_national_life_insurance_company_logo.jpeg)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

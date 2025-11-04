@@ -1,0 +1,20 @@
+meta {
+  name: Get MYGA list
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/meta/myga
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDIyMkFBQSIsImtpZCI6Imluc18ydlBKSGg4OUt5b1lodHpKcEdFcFBmM3U2WkgiLCJ0eXAiOiJKV1QifQ.eyJhenAiOiJodHRwczovL2FubnVpdHlhc3N1cmFuY2VkaXJlY3QuY29tIiwiZXhwIjoyMDc3Mjg2NTUxLCJpYXQiOjE3NjE5MjY1NTEsImlzcyI6Imh0dHBzOi8vZmFjdHVhbC1zaGFkLTc1LmNsZXJrLmFjY291bnRzLmRldiIsImp0aSI6IjUxZTM4MDQyMTE0Nzg1MTk0OGU4IiwibmJmIjoxNzYxOTI2NTQ2LCJzdWIiOiJ1c2VyXzMya1hzbm9jbm5ia3RzcDRuYmNDYWVod3NJRiJ9.LpFVTNRG_5txCob2WqEvOGrSHvLu0efxiwe4dFe8Ym5UyfFj8Q1GSrWOUIfYZ7ildDvXwVbGFLkf-AoQw5ZD3s7k4dILCpDwcnoY_D_GSPfWNU0ApEvhAG5au6y8QkH9QzapoIL5LDns9D3ARLieRxubT7IIsa8In2UwG7QYqMiOWcLfHMXStnMLm370f5HG-mzbQs-UhBORc4iTHvUhTFudu92MP5xlKlIoxynZ1xMEV11hPE36W3nbvLCTsuiB-RUA_05RHHX_xiGLOPuT-wEpbs4nt5bbYZ2obIoV2mR4ddlmDC0nh75ToUPRcVXJjbJRq4HyHX8RWlrBvFLDkw
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
